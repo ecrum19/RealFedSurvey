@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "jbr": "^5.4.1"
+  },
+  "scripts": {
+    "jbr": "jbr"
+  },
+  "name": "RealFedSurvey",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:ecrum19/RealFedSurvey.git",
+  "license": "MIT"
+}
