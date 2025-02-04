@@ -1,4 +1,4 @@
-# Datasources: https://sparql.rhea-db.org/sparql 
+# Datasources: https://sparql.rhea-db.org/sparql https://sparql.uniprot.org/sparql
 PREFIX rh: <http://rdf.rhea-db.org/>
 PREFIX up: <http://purl.uniprot.org/core/>
 
@@ -16,6 +16,6 @@ WHERE {
       ?uniprot up:annotation/up:catalyticActivity/up:catalyzedReaction ?rhea . 
   	}
   	GROUP BY ?rhea
-  }
   ?rhea rh:accession ?accession .
   ?rhea rh:equation ?equation .
+}

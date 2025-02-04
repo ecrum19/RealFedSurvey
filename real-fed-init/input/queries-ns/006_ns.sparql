@@ -1,4 +1,4 @@
-# Datasources: https://biosoda.unil.ch/emi/sparql/ 
+# Datasources: https://biosoda.unil.ch/emi/sparql/ https://query.wikidata.org/sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX dcterms: <http://purl.org/dc/terms/>
 PREFIX wdt: <http://www.wikidata.org/prop/direct/>
@@ -61,5 +61,5 @@ WHERE {
                 wdt:P225 ?genus_name ;
                 ^wdt:P171* ?wd_sp .
         }
-    }
+} GROUP BY ?family_name ?genus_name ?species_name ?wd_sp ?feature ?sub_rt ?sub_parent_mass ?count
 ORDER BY DESC(?count)

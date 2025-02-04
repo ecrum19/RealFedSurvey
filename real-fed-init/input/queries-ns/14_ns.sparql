@@ -1,4 +1,4 @@
-# Datasources: https://sparql.omabrowser.org/sparql 
+# Datasources: https://sparql.omabrowser.org/sparql http://sparql.nibb.ac.jp/sparql
 PREFIX oma: <http://omabrowser.org/ontology/oma#>
 PREFIX orth: <http://purl.org/net/orth#>
 PREFIX sio: <http://semanticscience.org/resource/>
@@ -20,7 +20,6 @@ SELECT ?protein2 ?species WHERE {
       }
       FILTER (?node1_mbgd != ?node2_mbgd)
     }
-  }
   FILTER NOT EXISTS { # keep only those that do not exist in OMA
     ?cluster a orth:OrthologsCluster ;
       orth:hasHomologousMember ?node1 ;

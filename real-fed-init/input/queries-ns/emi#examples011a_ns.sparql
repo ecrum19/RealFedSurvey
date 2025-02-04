@@ -26,9 +26,9 @@ PREFIX emi: <https://purl.org/emi#>
                  				    wdt:P171* wd:Q879246 . 
                  		}
 
-                    	}
 			BIND(REPLACE(STR(?sourceName), "%20", " ") AS ?sourceNameX)	#remove percent-encoding for scientific names of source-X
 			BIND(IRI(?sourceNameX) AS ?sourceNameURI)		
 			BIND(REPLACE(STR(?targetName), "%20", " ") AS ?targetNameX)	#remove percent-encoding for scientific names of target-Y
 			BIND(IRI(?targetNameX) AS ?targetNameURI)
+                }
 

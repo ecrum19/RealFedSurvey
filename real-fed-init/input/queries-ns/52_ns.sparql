@@ -1,4 +1,4 @@
-# Datasources: https://sparql.uniprot.org/sparql/  
+# Datasources: https://sparql.uniprot.org/sparql/ https://sparql.rhea-db.org/sparql https://idsm.elixir-czech.cz/sparql/endpoint/idsm
 PREFIX CHEBI: <http://purl.obolibrary.org/obo/CHEBI_>
 PREFIX cco: <http://rdf.ebi.ac.uk/terms/chembl#>
 PREFIX chebihash: <http://purl.obolibrary.org/obo/chebi#>
@@ -40,7 +40,6 @@ WHERE
 		owl:someValuesFrom  ?chebi .
       ?chebi2 (rdfs:subClassOf)+ CHEBI:15889
     }
-  }
   # UniProt: retrieve the human (taxid:9606) enzymes catalyzing these Rhea reactions
   ?ca       up:catalyzedReaction  ?reaction .
   ?a        up:catalyticActivity  ?ca .

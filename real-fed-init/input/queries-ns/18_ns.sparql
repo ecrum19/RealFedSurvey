@@ -11,7 +11,6 @@ WHERE {
         select distinct ?entry ?disease WHERE {
             ?entry np:isoform / np:disease / rdfs:comment ?disease
         }
-    }
     ?gene rdfs:seeAlso ?entry;
         :name ?gene_name ;
         :description ?description.
@@ -21,4 +20,5 @@ WHERE {
         :hasMember ?gene_zf.
     ?gene_zf :name ?gene_zf_name;
         up:organism/a [up:scientificName "Danio rerio"].
+} ORDER BY ?disease
 

@@ -43,45 +43,39 @@ def main():
         ns_query_source = s_query_source
         split_query = s_query_text.split("\n")
         ns_query_text = ""
-        squigle = None
-        level = 0
+        brace_count = 0
         curr_service = False
         for line in split_query:
-            # remove service description line
+            # remove SERVICE description line
             if "SERVICE" in line:
                 line_s = line.split(" ")
-                source = line_s[1].replace("<", "").replace(">", "")
+                for s in line_s:
+                    if "<" in s:
+                        source = s.replace("<", "").replace(">", "")
+                        if "{" in source:
+                            source = source[:-1]
                 ns_query_source += " %s" % source
-                squigle = 1
-                level = 0
+                brace_count += 1
                 curr_service = True
             
             # case where both brackets are in same line
-            elif "{" in line and "}" in line:
+            elif "{" in line and "}" in line and curr_service:
                 ns_query_text += "%s\n" % line
 
-            # for incase there is an inner clause
-            elif "{" in line:
-                squigle = 0
-                level += 1
+            # count bracket offset
+            elif "{" in line and curr_service:
+                brace_count += 1
                 ns_query_text += "%s\n" % line
 
-            # close the inner clause
-            elif "}" in line and squigle == 0:
-                if level > 0:
-                    level -= 1
-                    ns_query_text += "%s\n" % line
-                elif curr_service and curr_service:
-                    squigle = 1
+            # find closing bracket for SERVICE clause
+            elif "}" in line and curr_service:
+                brace_count -= 1
+                if brace_count > 0:
                     ns_query_text += "%s\n" % line
                 else:
-                    ns_query_text += "%s\n" % line
+                    curr_service = False
+                    brace_count = 0
             
-            # the close of the service clause
-            elif "}" in line and squigle == 1 and curr_service:
-                squigle = 0
-                curr_service = False
-
             # for normal query lines
             else:
                 ns_query_text += "%s\n" % line
@@ -106,7 +100,7 @@ def main():
         s_full_output_path = os.path.join(output_dir_s, s_output_filename)
         ns_full_output_path = os.path.join(output_dir_ns, ns_output_filename)
 
-        # for with SERVICE DESCRIPTIONS
+        # for with SERVICE descriptions
         try:
             with open(s_full_output_path, 'w', encoding='utf-8') as out_file:
                 out_file.write("# Datasources: %s\n%s" % (s_query_source, s_query_text))

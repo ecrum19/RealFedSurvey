@@ -1,4 +1,4 @@
-# Datasources: https://sparql.uniprot.org/sparql/ 
+# Datasources: https://sparql.uniprot.org/sparql/ SERVICEhttps://id.nlm.nih.gov/mesh/sparql
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX up: <http://purl.uniprot.org/core/>
 
@@ -10,7 +10,6 @@ WHERE {
 	  ?mesh <http://id.nlm.nih.gov/mesh/vocab#broaderDescriptor>* ?broader .
       ?broader <http://id.nlm.nih.gov/mesh/vocab#preferredConcept> <http://id.nlm.nih.gov/mesh/M0013493> .
     }
-  }
   GRAPH <http://sparql.uniprot.org/diseases>{
     ?disease a up:Disease ;
     	rdfs:seeAlso ?mesh .
