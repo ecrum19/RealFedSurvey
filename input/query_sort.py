@@ -23,7 +23,7 @@ def main():
         sys.exit(1)
 
     # Define the directory where query files will be stored.
-    output_dir = "queries"
+    output_dir = "queries-alt"
     os.makedirs(output_dir, exist_ok=True)
 
     # Iterate over each item in the "data" dictionary.
