@@ -2,17 +2,28 @@ import os
 import json
 import sys
 
+## TODO: Split REGULAR and NO SERVICE clauses into separate functions
+## TODO: Look into using rdflib-sparql parser (https://github.com/RDFLib/rdflib-sparql/blob/master/rdflib_sparql/parser.py)
+
 def main():
     if len(sys.argv) < 2:
-        print("Usage: python3 query-sort.py <input_json_file>")
+        print("Usage: python3 query-sort.py <input_json_file> <output_path>")
         sys.exit(1)
 
     input_file = sys.argv[1]
+    output_directory = sys.argv[2]
+    # checks input file validity
     try:
         with open(input_file, 'r', encoding='utf-8') as f:
             json_data = json.load(f)
     except Exception as e:
         print(f"Error reading {input_file}: {e}")
+        sys.exit(1)
+
+    working_output_dir = os.path.join(output_directory)
+    # checks if specified output path is valid
+    if not os.path.isdir(working_output_dir):
+        print(f"Error: {output_directory} does not exist.")
         sys.exit(1)
 
     # Make sure the JSON has a top-level "data" key.
@@ -21,8 +32,9 @@ def main():
         sys.exit(1)
 
     # Define the directory where query files will be stored (w/ + w/o SERVICE description).
-    output_dir_s = os.path.join("real-fed-init", "input", "queries-s")
-    output_dir_ns = os.path.join("real-fed-init", "input", "queries-ns")
+    experiment = os.path.basename(working_output_dir)
+    output_dir_s = os.path.join(experiment, "input", "queries-s")
+    output_dir_ns = os.path.join(experiment, "input", "queries-ns")
     os.makedirs(output_dir_s, exist_ok=True)
     os.makedirs(output_dir_ns, exist_ok=True)
 

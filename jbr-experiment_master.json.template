@@ -1,0 +1,15 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/jbr/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@jbr-experiment/bsbm/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@jbr-hook/sparql-endpoint-comunica/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@jbr-hook/cli/^5.0.0/components/context.jsonld"
+  ],
+  "@id": "urn:jbr:real-fed-init",
+  "@type": "FullFactorialCombinationProvider",
+  "queriesPath": "input/queries/",
+  "queryRunnerWarmupRounds": 1,
+  "queryRunnerRequestDelay": 0,
+  "queryRunnerEndpointAvailabilityCheckTimeout": 1000,
+  "hookSparqlEndpoint": %FACTOR-hookSparqlEndpoint%
+}

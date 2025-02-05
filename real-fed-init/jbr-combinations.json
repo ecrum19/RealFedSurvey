@@ -1,0 +1,25 @@
+{
+  "@context": [
+    "https://linkedsoftwaredependencies.org/bundles/npm/jbr/^5.0.0/components/context.jsonld"
+  ],
+  "@id": "urn:jbr:real-fed-init-combinations",
+  "@type": "FullFactorialCombinationProvider",
+  "commonGenerated": false,
+  "factors": {
+
+    "filter-pushdown": [ "normal", "aggressive" ],
+    "rate-limit": [ "yes", "no" ],
+
+    "stats": [ "ask", "count", "void" ],
+
+    "join-strat": [ "bind", "sym-hash", "asym-hash", "nest-loop", "comunica-default"],
+    "bj-block-size": [ 16, 8, 24 ],
+
+    "cpu-weight": [ 0, 0 ],
+    "mem-weight": [ 0, 0 ],
+    "time-weight": [ 0, 0 ],
+    "io-weight": [ 0, 0 ],
+
+    "source-selection": [ "service", "no-service"]
+  }
+}
