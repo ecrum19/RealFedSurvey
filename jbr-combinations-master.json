@@ -1,25 +1,22 @@
 {
   "@context": [
-    "https://linkedsoftwaredependencies.org/bundles/npm/jbr/^5.0.0/components/context.jsonld"
+    "https://linkedsoftwaredependencies.org/bundles/npm/jbr/^5.0.0/components/context.jsonld",
+    "https://linkedsoftwaredependencies.org/bundles/npm/@jbr-hook/sparql-endpoint-comunica/^5.0.0/components/context.jsonld"
   ],
   "@id": "urn:jbr:real-fed-survey-combinations",
   "@type": "FactorialCombinationProvider",
   "commonGenerated": true,
   "factors": {
-    "filter-pushdown": [ "normal", "aggressive" ],
-    "rate-limit": [ "yes", "no" ],
-
+    "filter-pushdown": [ "deffp", "aggfp" ],
+    "rate-limit": [ "rl", "norl" ],
     "stats": [ "ask", "count", "void" ],
+    "join-strat": [ "bind", "sym", "asym", "nest", "default"],
+    "bindjoin-block-size": [ "def", "sm", "lg" ],
 
-    "join-strat": [ "bind", "sym-hash", "asym-hash", "nest-loop", "comunica-default"],
-    "bj-block-size": [ 16, 8, 24 ],
-
-    "cpu-weight": [ 0, 0 ],
-    "mem-weight": [ 0, 0 ],
-    "time-weight": [ 0, 0 ],
-    "io-weight": [ 0, 0 ],
-
-    "source-selection": [ "service", "no-service"]
+    "cpu-weight": [ "def", "alt" ],
+    "mem-weight": [ "def", "alt" ],
+    "time-weight": [ "def", "alt" ],
+    "io-weight": [ "def", "alt" ]
 
   }
 }

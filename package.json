@@ -6,9 +6,10 @@
   "scripts": {
     "jbr": "jbr"
   },
-  "name": "RealFedSurvey",
+  "name": "realfedsurvey",
   "version": "1.0.0",
   "main": "index.js",
+  "lsd:module": true,
   "repository": "git@github.com:ecrum19/RealFedSurvey.git",
   "license": "MIT"
 }

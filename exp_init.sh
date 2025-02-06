@@ -20,7 +20,7 @@ done
 next=$((max + 1))
 
 # Initialize the jbr experiment with new directory name
-jbr init -c sparql-custom survey-exp-$next
+npm run jbr -- init -c sparql-custom survey-exp-$next
 
 
 # TODO: copy jbr-combinations-master.json ++ jbr-experiment_master.json.template to created directory (with proper names)
